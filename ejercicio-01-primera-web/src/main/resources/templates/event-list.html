@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <!--  Esto lo hacemos aqui porque es una PLANTILLA-->
+    <meta charset="UTF-8">
+    <title>Listado de Eventos</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+            background-color: mistyrose;
+        }
+
+        tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="'Listado de eventos de '+ ${usuario}"> Eventos del usuario</h1>
+
+
+<table>
+    <caption>Eventos</caption>
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Título</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Inicio</th>
+        <th scope="col">Fin</th>
+        <th scope="col">Obsevaciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="event : ${events}">
+        <th scope="row" th:text="${event.eventId}"></th>
+        <td th:text="${event.title}"></td>
+        <td th:text="${event.description}"></td>
+        <td th:text="${event.start}"></td>
+        <td th:text="${event.end}"></td>
+        <!--        El segundo del for each es para poder cambiar lo de eventStat
+            <tr th:each="event , status : ${events}">
+
+        -->
+        <td th:text="'Fila ' + ${eventStat.count} + ' de '+ ${eventStat.size}">Fila 1 de 5</td>
+
+    </tr>
+    </tbody>
+
+</table>
+
+<p><a href="/event/new">Crear nuevo evento</a></p>
+
+
+</body>
+</html>

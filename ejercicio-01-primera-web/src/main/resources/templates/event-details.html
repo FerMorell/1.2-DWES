@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<!--  Esto lo hacemos aqui porque es una PLANTILLA-->
+    <meta charset="UTF-8">
+    <title>Detalle de Eventos</title>
+    <style>
+        body{
+            font-family: "Copperplate Gothic Bold";
+            background-color: mistyrose;
+        }
+    </style>
+</head>
+<body>
+<h1>Detalle de eventos <span th:text="${event.getEventId()}"></span> </h1>
+
+<p>Titulo: (getter sin parentesis)<span th:text="${event.getTitle}"></span>  </p>
+<p>Titulo:(atributo) <span th:text="${event.title}"></span>  </p>
+
+<p>Descripción: <span th:text="${event.getDescription}"></span>  </p>
+<p>Fecha inicio: <span th:text="${event.getStart()}"></span>  </p>
+<p th:if="${event.getEnd()!=null}">Fecha fin: <span th:text="${event.getEnd()}"></span>  </p>
+<p th:if="${event.getEnd()==null}">El evento no tiene fecha fin >:D  </p>
+
+
+<p><a href="/event">Volver al listado</a> </p>
+
+
+
+
+
+
+
+</body>
+</html>
